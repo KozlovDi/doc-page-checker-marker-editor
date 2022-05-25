@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Documents editor</title>
+</head>
+<body>
+
+<div id = "marker-list-container" name = "marker-list-container">
+    <ul id = "marker-list" name = "marker-list">Markers</ul>
+    <button type="button" id="save" class="btn btn-save">Save</button>
+</div>
+
+<div id="canvas_container">
+    <canvas id="pdf_render"></canvas>
+</div>
+
+<div id="navigation_controls">
+    <button type="button" id="go_previous">Previous</button>
+    <input id="current_page" type="number" value="1">
+    <button id="go_next">Next</button>
+</div>
+<input type="file" id="file_upload">
+<input type="submit" id="submit_file">
+
+<div class="popup">
+    <div class="popup__container">
+        <div class="popup__wrapper">
+            <div id="popup__block">
+                <label id="popup__label" for="enter__name">Enter marker's name: </label>
+                <input type="text" name="nameReq" id="enter__name" value="">
+                <button type="submit" class="btn btn-success">Send</button>
+                <button type="submit" class="btn btn-cancel">Cancel</button>
+                <input type="checkbox" name="isIgnore" id="is-ignore" value="false">
+                <p id="popup__adv" style="color : red"  hidden = "true">This name is already used</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    require('./js/render.js');
+    require('./js/test.js');
+    require('./js/showMarker.js');
+    require('./js/saveToJson.js');
+</script>
+</html>
