@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379713e9-8f03-48eb-9a06-0dc046e93560" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/doc-page-checker-marker-editor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/doc-page-checker-marker-editor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/pdfPresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/pdfPresentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/render.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/saveToJson.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/saveToJson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/showMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/showMarker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/markers.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/markers.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +27,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../doc-page-checker/doc-page-checker" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -67,6 +63,13 @@
       <workItem from="1653513969328" duration="63000" />
       <workItem from="1653573513480" duration="2588000" />
       <workItem from="1653678638204" duration="5843000" />
+      <workItem from="1653833602207" duration="2589000" />
+      <workItem from="1653843703832" duration="3950000" />
+      <workItem from="1653853705800" duration="3357000" />
+      <workItem from="1653858401381" duration="453000" />
+      <workItem from="1653859970395" duration="2954000" />
+      <workItem from="1653937615548" duration="8708000" />
+      <workItem from="1653952535496" duration="499000" />
     </task>
     <servers />
   </component>

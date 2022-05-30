@@ -32,6 +32,68 @@ $(document).ready(function() {
             popup.classList.add('popup_open');
         });
     });
+
+    document.querySelector('#go_next').addEventListener('click', () =>{
+        currentPage = document.getElementById("current_page").value;
+        let pageNum = Number(currentPage);
+        let JSONMarkersList = JSON.parse(localStorage.getItem(String(pageNum + 1)));
+        if (JSONMarkersList != null) {
+            markersList = [];
+            JSONMarkersList.forEach((marker) => {
+                markersList.push(JSON.stringify({
+                    name: marker.name,
+                    ignore: marker.ignore,
+                    x: marker.x,
+                    y: marker.y,
+                    width: marker.width,
+                    height: marker.height
+                }));
+                document.getElementsByName("marker" + marker.name)[0]
+                    .removeAttribute("hidden");
+            });
+        }
+        else
+            markersList = [];
+        console.log(markersList);
+        let prevJSONMarkersList = JSON.parse(localStorage.getItem(String(pageNum)));
+        if (prevJSONMarkersList != null) {
+            prevJSONMarkersList.forEach((marker) => {
+                document.getElementsByName("marker" + marker.name)[0]
+                    .setAttribute('hidden', 'true');
+            });
+        }
+    });
+
+    document.querySelector('#go_previous').addEventListener('click', () =>{
+        currentPage = document.getElementById("current_page").value;
+        let pageNum = Number(currentPage);
+        let JSONMarkersList = JSON.parse(localStorage.getItem(String(pageNum - 1)));
+        if (JSONMarkersList != null) {
+            markersList = [];
+            JSONMarkersList.forEach((marker) => {
+                markersList.push(JSON.stringify({
+                    name: marker.name,
+                    ignore: marker.ignore,
+                    x: marker.x,
+                    y: marker.y,
+                    width: marker.width,
+                    height: marker.height
+                }));
+                document.getElementsByName("marker" + marker.name)[0]
+                    .removeAttribute("hidden");
+            });
+        }
+        else
+            markersList = [];
+        console.log(markersList);
+        let prevJSONMarkersList = JSON.parse(localStorage.getItem(String(pageNum)));
+        if (prevJSONMarkersList != null) {
+            prevJSONMarkersList.forEach((marker) => {
+                document.getElementsByName("marker" + marker.name)[0]
+                    .setAttribute('hidden', 'true');
+            });
+        }
+    });
     createMarker();
 });
 
@@ -48,48 +110,6 @@ function checkNameUniqueness(markerName) {
 }
 
 function  createMarker() {
-
-    document.querySelector('#go_next').addEventListener('click', () =>{
-        currentPage = document.getElementById("current_page").value;
-        let pageNum = Number(currentPage);
-        markersList = (localStorage.getItem(String(pageNum + 1)) == null) ?
-            [] : JSON.parse(localStorage.getItem(String(pageNum + 1)));
-
-        markersList.forEach((marker) => {
-            document.getElementsByName("marker" + marker.name)[0]
-                .removeAttribute("hidden");
-        });
-
-        let prevMarkersList = (localStorage.getItem(String(pageNum)) == null) ?
-            [] : JSON.parse(localStorage.getItem(String(pageNum)));
-
-        prevMarkersList.forEach((marker) => {
-            document.getElementsByName("marker" + marker.name)[0]
-                .setAttribute('hidden', 'true');
-        });
-
-    });
-
-    document.querySelector('#go_previous').addEventListener('click', () =>{
-        currentPage = document.getElementById("current_page").value;
-        let pageNum = Number(currentPage);
-        markersList = (localStorage.getItem(String(pageNum - 1)) == null) ?
-            [] : JSON.parse(localStorage.getItem(String(pageNum - 1)));
-
-        markersList.forEach((marker) => {
-            document.getElementsByName("marker" + marker.name)[0]
-                .removeAttribute("hidden");
-        });
-
-        let prevMarkersList = (localStorage.getItem(String(pageNum)) == null) ?
-            [] : JSON.parse(localStorage.getItem(String(pageNum)));
-
-        prevMarkersList.forEach((marker) => {
-            document.getElementsByName("marker" + marker.name)[0]
-                .setAttribute('hidden', 'true');
-        });
-
-    });
 
     document.querySelector('.btn-success').addEventListener('click', () => {
         const markerNameSpanElem = document.createElement("span");
@@ -119,8 +139,7 @@ function  createMarker() {
             height: Math.abs(end.y - start.y)
         }));
 
-        localStorage.setItem(document.getElementById("current_page").value,
-            (markersList.length === 1) ? markersList : '[' + markersList + ']');
+        localStorage.setItem(document.getElementById("current_page").value, "[" + markersList + "]");
 
         markerNameSpanElem.setAttribute("id", "marker-name");
         markerNameSpanElem.setAttribute("name", "marker-name" + markerName);
@@ -149,17 +168,14 @@ function  createMarker() {
         delBtn.setAttribute("name", "del" + markerName);
         delBtn.setAttribute("onClick", `
             currentPage = document.getElementById("current_page").value;
-            document.getElementsByName('li' + \'` + markerName + `\')[0].remove();
-            document.getElementsByName('marker' + \'` + markerName + `\')[0].remove();
             let tempMarkerList = JSON.parse(localStorage.getItem(currentPage));
-            console.log(tempMarkerList);
+            
             jQuery(tempMarkerList).each(function (i){
                 if(tempMarkerList[i].name === \'` + markerName + `\'){
                     tempMarkerList.splice(i, 1);
                     return;
                 }
             });
-            console.log(tempMarkerList);
             localStorage.setItem(currentPage, JSON.stringify(tempMarkerList));
         `);
         delBtn.innerHTML = "x";
@@ -178,8 +194,6 @@ function  createMarker() {
         document.getElementById('enter__name').value = "";
 
         adv.setAttribute("hidden", "true");
-
-
 
     });
 
