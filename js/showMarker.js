@@ -168,15 +168,24 @@ function  createMarker() {
         delBtn.setAttribute("name", "del" + markerName);
         delBtn.setAttribute("onClick", `
             currentPage = document.getElementById("current_page").value;
-            let tempMarkerList = JSON.parse(localStorage.getItem(currentPage));
-            
-            jQuery(tempMarkerList).each(function (i){
-                if(tempMarkerList[i].name === \'` + markerName + `\'){
-                    tempMarkerList.splice(i, 1);
-                    return;
+            document.getElementsByName('li' + \'` + markerName + `\')[0].remove();
+            document.getElementsByName('marker' + \'` + markerName + `\')[0].remove();
+            let tempMarkersList = [];
+            let JSONTempMarkersList = JSON.parse(localStorage.getItem(currentPage));
+            JSONTempMarkersList.forEach((marker) => {
+                if (marker.name != ` + markerName + `){
+                    tempMarkersList.push(JSON.stringify({
+                        name: marker.name,
+                        ignore: marker.ignore,
+                        x: marker.x,
+                        y: marker.y,
+                        width: marker.width,
+                        height: marker.height
+                    }));
                 }
+               
             });
-            localStorage.setItem(currentPage, JSON.stringify(tempMarkerList));
+            localStorage.setItem(currentPage, "[" + tempMarkersList + "]");
         `);
         delBtn.innerHTML = "x";
 
